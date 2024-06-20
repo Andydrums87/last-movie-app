@@ -12,16 +12,7 @@
 </head>
 <body>
     <%- include("partials/header.ejs") %>
-    <%= data = data %>
-    <% let userResponse = data.Response || 'not found' %>
-   <% if (userResponse === "False") { %>
-    <div class="error__container">
- <h1 class="error__message">
-      Movie Not Found
-    </h1>
-   
-</div>
-  <% }  else { %>
+  
 <div class="info">
     <div class="movie__poster">
        <img src=" <%= data.Poster %> " alt="poster image"> 
@@ -66,7 +57,7 @@
     <h4>iMDB Rating: <span><%= data.imdbRating %> <span class="little__span">(<%= data.imdbVotes %>votes)</span> </span> </h4>
  </div>
 </div>
- <% } %>
+
  <script src="app.js"></script>
 </body>
 </html>
