@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
 app.post("/", async (req, res) => {
  try {
     const movieTitle = req.body.search
-    const response = await axios.get(`http://www.omdbapi.com/?t=${movieTitle}&apikey=${key}`);
+    const response = await axios.get(`https://www.omdbapi.com/?t=${movieTitle}&apikey=${key}`);
     const result = response.data
     console.log(result)
     res.render("index.ejs", {data: result})
