@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <title>Movie Search App</title>
+</head>
+<body>
+    <%- include("partials/header.ejs") %>
+    <% let userResponse = data.Response || 'not found' %>
+   <% if (userResponse == "False") { %>
+    <div class="error__container">
+ <h1 class="error__message">
+      Movie Not Found
+    </h1>
+   
+</div>
+  <% }  else { %>
+<div class="info">
+    <div class="movie__poster">
+       <img src=" <%= data.Poster %> " alt="poster image"> 
+    </div>
+  <div class="movie__data">
+    <h3 class="movie__title">
+        <%= data.Title %> <span class="movie__year"> <%= data.Year %></span>
+    </h3> 
+    <ul class="genre__list">
+        <% let text = data.Genre || 'not found' %>
+        <% textNoCommas = text.replace(/,/g, "") %>
+        <% const genres = textNoCommas.split(" "); %>
+       
+        <% genres.forEach(genre=> { %>
+            <li>
+              <%= genre %> 
+            </li>
+            <% }) %>
+    </ul>
+    <p> <%= data.Plot %></p>
+    <h4>Director:  <span><%= data.Director %></span>  </h4>
+   
+    <% const writers = data.Writer || 'not found' %>
+    <% const allWriters= writers.split(" "); %>
+    <h4>Writers: 
+
+  <% allWriters.forEach(writer => { %>
+        <span> <%= writer %></span>
+     <%  }); %> 
+
+    </h4>
+     
+
+    <% let star = data.Actors || 'not found' %>
+    <% const allStars = star.split(" "); %>
+   
+    <h4>Stars: 
+        <% allStars.forEach(star => { %>
+        <span> <%= star %></span>
+     <%   }); %>
+    </h4>
+    <h4>iMDB Rating: <span><%= data.imdbRating %> <span class="little__span">(<%= data.imdbVotes %>votes)</span> </span> </h4>
+ </div>
+</div>
+ <% } %>
+ <script src="app.js"></script>
+</body>
+</html>
