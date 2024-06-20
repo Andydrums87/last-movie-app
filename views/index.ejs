@@ -11,6 +11,7 @@
 </head>
 <body>
     <%- include("partials/header.ejs") %>
+    <%= data = data %>
     <% let userResponse = data.Response || 'not found' %>
    <% if (userResponse == "False") { %>
     <div class="error__container">
